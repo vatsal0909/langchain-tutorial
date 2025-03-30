@@ -16,7 +16,7 @@ user_paragraph_size  = st.selectbox(
  ('1-2 paragraph', '2-3 pargrph', '5 paragraphs'))
 user_temprature  = st.selectbox(
     'which tone you want',
- ('scientific', 'some small code to invoke model', 'beginner friendly'))
+ ('scientific', 'also give small code to invoke model', 'beginner friendly'))
 
 
 prompt_template = load_prompt("template.json")
