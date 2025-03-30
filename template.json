@@ -1,0 +1,17 @@
+{
+    "name": null,
+    "input_variables": [
+        "paragraph_size",
+        "paragraph_temprature",
+        "topic"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "you are a summery generator , you have to summerize on topic {topic} and generate paragraps of {paragraph_size} and you have to generate on basis of {paragraph_temprature} ",
+    "template_format": "f-string",
+    "validate_template": false,
+    "_type": "prompt"
+}
