@@ -1,0 +1,928 @@
+
+
+
+
+
+Introduction | ğŸ¦œï¸�ğŸ”— LangChain
+
+
+
+
+
+
+Skip to main contentJoin us at  Interrupt: The Agent AI Conference by LangChain on May 13 & 14 in San Francisco!IntegrationsAPI ReferenceMoreContributingPeopleError referenceLangSmithLangGraphLangChain HubLangChain JS/TSv0.3v0.3v0.2v0.1ğŸ’¬SearchIntroductionTutorialsBuild a Question Answering application over a Graph DatabaseTutorialsBuild a simple LLM application with chat models and prompt templatesBuild a ChatbotBuild a Retrieval Augmented Generation (RAG) App: Part 2Build an Extraction ChainBuild an AgentTaggingBuild a Retrieval Augmented Generation (RAG) App: Part 1Build a semantic search engineBuild a Question/Answering system over SQL dataSummarize TextHow-to guidesHow-to guidesHow to use tools in a chainHow to use a vectorstore as a retrieverHow to add memory to chatbotsHow to use example selectorsHow to add a semantic layer over graph databaseHow to invoke runnables in parallelHow to stream chat model responsesHow to add default invocation args to a RunnableHow to add retrieval to chatbotsHow to use few shot examples in chat modelsHow to do tool/function callingHow to install LangChain packagesHow to add examples to the prompt for query analysisHow to use few shot examplesHow to run custom functionsHow to use output parsers to parse an LLM response into structured formatHow to handle cases where no queries are generatedHow to route between sub-chainsHow to return structured data from a modelHow to summarize text through parallelizationHow to summarize text through iterative refinementHow to summarize text in a single LLM callHow to use toolkitsHow to add ad-hoc tool calling capability to LLMs and Chat ModelsBuild an Agent with AgentExecutor (Legacy)How to construct knowledge graphsHow to partially format prompt templatesHow to handle multiple queries when doing query analysisHow to use built-in tools and toolkitsHow to pass through arguments from one step to the nextHow to compose prompts togetherHow to handle multiple retrievers when doing query analysisHow to add values to a chain's stateHow to construct filters for query analysisHow to configure runtime chain internalsHow deal with high cardinality categoricals when doing query analysisCustom Document LoaderHow to use the MultiQueryRetrieverHow to add scores to retriever resultsCachingHow to use callbacks in async environmentsHow to attach callbacks to a runnableHow to propagate callbacks  constructorHow to dispatch custom callback eventsHow to pass callbacks in at runtimeHow to split by characterHow to cache chat model responsesHow to handle rate limitsHow to init any model in one lineHow to track token usage in ChatModelsHow to add tools to chatbotsHow to split codeHow to do retrieval with contextual compressionHow to convert Runnables to ToolsHow to create custom callback handlersHow to create a custom chat model classCustom EmbeddingsHow to create a custom LLM classCustom RetrieverHow to create toolsHow to debug your LLM appsHow to load CSVsHow to load documents from a directoryHow to load HTMLHow to load JSONHow to load MarkdownHow to load Microsoft Office filesHow to load PDFsHow to load web pagesHow to create a dynamic (self-constructing) chainText embedding modelsHow to combine results from multiple retrieversHow to select examples from a LangSmith datasetHow to select examples by lengthHow to select examples by maximal marginal relevance (MMR)How to select examples by n-gram overlapHow to select examples by similarityHow to use reference examples when doing extractionHow to handle long text when doing extractionHow to use prompting alone (no tool calling) to do extractionHow to add fallbacks to a runnableHow to filter messagesHybrid SearchHow to use the LangChain indexing APIHow to inspect runnablesLangChain Expression Language CheatsheetHow to cache LLM responsesHow to track token usage for LLMsRun models locallyHow to get log probabilitiesHow to reorder retrieved results to mitigate the "lost in the middle" effectHow to split Markdown by HeadersHow to merge consecutive messages of the same typeHow to add message historyHow to migrate from legacy LangChain agents to LangGraphHow to retrieve using multiple vectors per documentHow to pass multimodal data directly to modelsHow to use multimodal promptsHow to create a custom Output ParserHow to use the output-fixing parserHow to parse JSON outputHow to retry when a parsing error occursHow to parse text from message objectsHow to parse XML outputHow to parse YAML outputHow to use the Parent Document RetrieverHow to use LangChain with different Pydantic versionsHow to add chat historyHow to get a RAG application to add citationsHow to do per-user retrievalHow to get your RAG application to return sourcesHow to stream results from your RAG applicationHow to split JSON dataHow to recursively split text by charactersResponse metadataHow to pass runtime secrets to runnablesHow to do "self-querying" retrievalHow to split text based on semantic similarityHow to chain runnablesHow to save and load LangChain objectsHow to split text by tokensHow to split HTMLHow to do question answering over CSVsHow to deal with large databases when doing SQL question-answeringHow to better prompt when doing SQL question-answeringHow to do query validation as part of SQL question-answeringHow to stream runnablesHow to stream responses from an LLMHow to use a time-weighted vector store retrieverHow to return artifacts from a toolHow to use chat models to call toolsHow to disable parallel tool callingHow to force models to call a toolHow to access the RunnableConfig from a toolHow to pass tool outputs to chat modelsHow to pass run time values to toolsHow to stream events from a toolHow to stream tool callsHow to convert tools to OpenAI FunctionsHow to handle tool errorsHow to use few-shot prompting with tool callingHow to add a human-in-the-loop for toolsHow to bind model-specific toolsHow to trim messagesHow to create and query vector storesConceptual guideAgentsArchitectureAsync programming with langchainCallbacksChat historyChat modelsDocument loadersEmbedding modelsEvaluationExample selectorsFew-shot promptingConceptual guideKey-value storesLangChain Expression Language (LCEL)MessagesMultimodalityOutput parsersPrompt TemplatesRetrieval augmented generation (RAG)RetrievalRetrieversRunnable interfaceStreamingStructured outputsTestingString-in, string-out llmsText splittersTokensTool callingToolsTracingVector storesWhy LangChain?EcosystemğŸ¦œğŸ› ï¸� LangSmithğŸ¦œğŸ•¸ï¸� LangGraphVersionsv0.3v0.2Pydantic compatibilityMigrating from v0.0 chainsHow to migrate from v0.0 chainsMigrating from ConstitutionalChainMigrating from ConversationalChainMigrating from ConversationalRetrievalChainMigrating from LLMChainMigrating from LLMMathChainMigrating from LLMRouterChainMigrating from MapReduceDocumentsChainMigrating from MapRerankDocumentsChainMigrating from MultiPromptChainMigrating from RefineDocumentsChainMigrating from RetrievalQAMigrating from StuffDocumentsChainUpgrading to LangGraph memoryHow to migrate to LangGraph memoryHow to use BaseChatMessageHistory with LangGraphMigrating off ConversationBufferMemory or ConversationStringBufferMemoryMigrating off ConversationBufferWindowMemory or ConversationTokenBufferMemoryMigrating off ConversationSummaryMemory or ConversationSummaryBufferMemoryA Long-Term Memory AgentRelease policySecurity PolicyIntroductionOn this pageIntroduction
+LangChain is a framework for developing applications powered by large language models (LLMs).
+LangChain simplifies every stage of the LLM application lifecycle:
+
+Development: Build your applications using LangChain's open-source components and third-party integrations.
+Use LangGraph to build stateful agents with first-class streaming and human-in-the-loop support.
+Productionization: Use LangSmith to inspect, monitor and evaluate your applications, so that you can continuously optimize and deploy with confidence.
+Deployment: Turn your LangGraph applications into production-ready APIs and Assistants with LangGraph Platform.
+
+
+
+LangChain implements a standard interface for large language models and related
+technologies, such as embedding models and vector stores, and integrates with
+hundreds of providers. See the integrations page for
+more.
+
+Select chat model:OpenAIâ–¾OpenAIAnthropicAzureGoogle VertexAWSGroqCohereNVIDIAFireworks AIMistral AITogether AIIBM watsonxDatabricksxAIPerplexitypip install -qU "langchain[openai]"import getpassimport osif not os.environ.get("OPENAI_API_KEY"):  os.environ["OPENAI_API_KEY"] = getpass.getpass("Enter API key for OpenAI: ")from langchain.chat_models import init_chat_modelmodel = init_chat_model("gpt-4o-mini", model_provider="openai")
+model.invoke("Hello, world!")
+noteThese docs focus on the Python LangChain library. Head here for docs on the JavaScript LangChain library.
+Architectureâ€‹
+The LangChain framework consists of multiple open-source libraries. Read more in the
+Architecture page.
+
+langchain-core: Base abstractions for chat models and other components.
+Integration packages (e.g. langchain-openai, langchain-anthropic, etc.): Important integrations have been split into lightweight packages that are co-maintained by the LangChain team and the integration developers.
+langchain: Chains, agents, and retrieval strategies that make up an application's cognitive architecture.
+langchain-community: Third-party integrations that are community maintained.
+langgraph: Orchestration framework for combining LangChain components into production-ready applications with persistence, streaming, and other key features. See LangGraph documentation.
+
+Guidesâ€‹
+Tutorialsâ€‹
+If you're looking to build something specific or are more of a hands-on learner, check out our tutorials section.
+This is the best place to get started.
+These are the best ones to get started with:
+
+Build a Simple LLM Application
+Build a Chatbot
+Build an Agent
+Introduction to LangGraph
+
+Explore the full list of LangChain tutorials here, and check out other LangGraph tutorials here. To learn more about LangGraph, check out our first LangChain Academy course, Introduction to LangGraph, available here.
+How-to guidesâ€‹
+Here youâ€™ll find short answers to â€œHow do Iâ€¦.?â€� types of questions.
+These how-to guides donâ€™t cover topics in depth â€“ youâ€™ll find that material in the Tutorials and the API Reference.
+However, these guides will help you quickly accomplish common tasks using chat models,
+vector stores, and other common LangChain components.
+Check out LangGraph-specific how-tos here.
+Conceptual guideâ€‹
+Introductions to all the key parts of LangChain youâ€™ll need to know! Here you'll find high level explanations of all LangChain concepts.
+For a deeper dive into LangGraph concepts, check out this page.
+Integrationsâ€‹
+LangChain is part of a rich ecosystem of tools that integrate with our framework and build on top of it.
+If you're looking to get up and running quickly with chat models, vector stores,
+or other LangChain components from a specific provider, check out our growing list of integrations.
+API referenceâ€‹
+Head to the reference section for full documentation of all classes and methods in the LangChain Python packages.
+Ecosystemâ€‹
+ğŸ¦œğŸ› ï¸� LangSmithâ€‹
+Trace and evaluate your language model applications and intelligent agents to help you move from prototype to production.
+ğŸ¦œğŸ•¸ï¸� LangGraphâ€‹
+Build stateful, multi-actor applications with LLMs. Integrates smoothly with LangChain, but can be used without it. LangGraph powers production-grade agents, trusted by Linkedin, Uber, Klarna, GitLab, and many more.
+Additional resourcesâ€‹
+Versionsâ€‹
+See what changed in v0.3, learn how to migrate legacy code, read up on our versioning policies, and more.
+Securityâ€‹
+Read up on security best practices to make sure you're developing safely with LangChain.
+Contributingâ€‹
+Check out the developer's guide for guidelines on contributing and help getting your dev environment set up.Edit this pageWas this page helpful?NextTutorialsArchitectureGuidesTutorialsHow-to guidesConceptual guideIntegrationsAPI referenceEcosystemğŸ¦œğŸ› ï¸� LangSmithğŸ¦œğŸ•¸ï¸� LangGraphAdditional resourcesVersionsSecurityContributingCommunityTwitterGitHubOrganizationPythonJS/TSMoreHomepageBlogYouTubeCopyright Â© 2025 LangChain, Inc.
+
+
+
+
+
+How do I append to a file in Python? | Better Stack Community
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Platform
+
+
+
+
+
+
+
+
+
+Better Stack
+
+
+
+
+
+
+
+Uptime monitoring
+Get 10 monitors, and a status page totally free.
+
+
+
+Incident management & on-call
+Get a call when your website goes down
+
+
+
+Status page
+Communicate downtime & build trust
+
+
+
+Incident silencing
+Reduce alert noise & prevent alert fatigue
+
+
+
+Slack-based incident management
+Resolve incidents directly in Slack
+
+
+
+
+
+
+
+Better Stack
+
+
+
+
+
+
+
+Log management
+Collect insights across your stack
+
+
+
+Infrastructure monitoring
+OpenTelemetry-native infrastructure monitoring
+
+
+
+Observability dashboards
+Analyze metrics across your services
+
+
+
+
+
+
+Documentation
+
+
+Pricing
+
+
+
+Community
+
+
+
+
+Community home
+
+Guides
+
+Questions
+
+Comparisons
+
+Blog
+
+Newsletter
+
+
+
+
+
+
+Company
+
+
+
+
+Work at Better Stack
+
+Engineering
+
+Security
+
+
+
+
+
+Enterprise
+
+
+
+
+Sign in
+Sign up
+
+
+
+
+
+
+
+
+
+
+Platform
+
+
+Documentation
+Pricing
+
+Community
+
+
+
+Company
+
+
+Enterprise
+
+
+
+
+Back
+
+
+
+
+
+
+
+Better Stack
+
+
+
+
+
+
+
+Uptime monitoring
+Get 10 monitors, and a status page totally free.
+
+
+
+Incident management & on-call
+Get a call when your website goes down
+
+
+
+Status page
+Communicate downtime & build trust
+
+
+
+Incident silencing
+Reduce alert noise & prevent alert fatigue
+
+
+
+Slack-based incident management
+Resolve incidents directly in Slack
+
+
+
+
+
+
+
+Better Stack
+
+
+
+
+
+
+
+Log management
+Collect insights across your stack
+
+
+
+Infrastructure monitoring
+OpenTelemetry-native infrastructure monitoring
+
+
+
+Observability dashboards
+Analyze metrics across your services
+
+
+
+
+
+
+Back
+
+
+Community home
+
+Guides
+
+Questions
+
+Comparisons
+
+Blog
+
+Newsletter
+
+
+
+
+
+Back
+
+
+Work at Better Stack
+
+Engineering
+
+Security
+
+
+
+
+
+
+
+
+
+Community
+
+
+
+
+
+Guides
+
+
+
+
+Questions
+
+
+
+
+Comparisons
+
+
+
+
+Blog
+
+
+
+Docs
+
+Documentation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How do I append to a file in Python?
+
+
+
+
+Better Stack Team
+
+Updated on February  3, 2023
+
+
+
+
+
+
+
+
+
+To append to a file in Python, you can use the "a" mode in the open() function. This will open the file in append mode, which means that you can write new data at the end of the file.Here is an example of how to use the "a" mode to append to a file:
+
+ 
+
+
+
+
+Copied!
+
+
+
+# Open the file in append mode
+with open("filename.txt", "a") as file:
+    # Write the new data to the file
+    file.write("This is new data that is being appended to the file.")
+
+
+
+You can also use the "a" mode to create a new file if the file does not already exist. If the file does not exist, it will be created and you can then write data to it.Keep in mind that the "a" mode will not overwrite any existing data in the file. It will only add new data to the end of the file. If you want to overwrite the existing data in the file, you can use the "w" mode instead.
+
+
+
+
+Got an article suggestion?
+Let us know
+
+
+
+
+
+
+
+
+
+
+
+
+
+Explore more
+
+Python
+
+
+
+
+
+How to Copy Files in Python?
+
+
+
+
+
+Questions
+
+
+
+
+
+
+How do I delete a file or folder in Python?
+
+
+
+
+
+Questions
+
+
+
+
+
+
+How to read a file line-by-line in Python?
+
+
+
+
+
+Questions
+
+
+
+
+
+
+How To Write Logs To A File With Python?
+
+
+
+
+
+Questions
+
+
+
+
+
+
+
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+
+
+
+
+
+
+
+
+How to Copy Files in Python?
+
+
+To copy a file in Python, you can use the shutil module. Here is an example of how you can use the shutil.copy() function to copy a file:
+import shutil
+shutil.copy('/path/to/source/file', '/path/to...
+
+
+
+
+Questions
+
+
+
+
+
+
+How do I delete a file or folder in Python?
+
+
+You can use the os module to delete a file or folder in Python.
+To delete a file, you can use the os.remove() function. This function takes the file path as an argument and deletes the file at that...
+
+
+
+
+Questions
+
+
+
+
+
+
+How to read a file line-by-line in Python?
+
+
+To read a file line-by-line in Python, you can use the following approach:
+with open('file.txt') as f:
+    for line in f:
+        print(line)
+This will open the file, read each line in the file, an...
+
+
+
+
+Questions
+
+
+
+
+
+
+How To Write Logs To A File With Python?
+
+
+If you are new to logging in Python, please feel free to start with our Introduction to Python logging to get started smoothly. Otherwise, here is how to write logs to a file in Python:
+Using Basic...
+
+
+
+
+Questions
+
+
+
+
+
+
+
+
+
+
+Make your mark
+
+
+
+
+Join the writer's program
+
+Are you a developer and love writing and sharing your knowledge with the world? Join our guest
+writing program and get paid for writing amazing technical guides. We'll get them to the right
+readers that will appreciate them.
+
+
+Write for us
+
+
+
+
+Writer of the month
+
+
+
+Marin Bezhanov
+Marin is a software engineer and architect with a broad range of experience working...
+
+
+
+
+
+
+
+
+
+
+
+Build on top of Better Stack
+
+Write a script, app or project on top of Better Stack and share it with the world.
+Make a public repository and share it with us at our email.
+
+
+
+community@betterstack.com
+
+
+
+or submit a pull request and help us build better products for everyone.
+
+
+
+
+See the full list of amazing projects on github
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Platform
+Enterprise
+
+Uptime
+
+Telemetry
+
+
+Solutions
+Log management
+
+Infrastructure monitoring
+
+Uptime monitoring
+
+Website monitoring
+
+Incident management
+
+Status page
+
+Incident silencing
+
+Slack-based incident management
+
+Dashboards
+
+Integrations
+
+
+
+
+Resources
+Help & Support
+
+Uptime docs
+
+Logs docs
+
+
+Company
+Work at Better Stack
+
+Engineering
+
+Security
+
+
+Community
+Guides
+
+Questions
+
+Comparisons
+
+Blog
+
+Write for us
+
+
+
+
+
+Company
+Work at Better Stack
+
+Engineering
+
+Security
+
+
+Resources
+Help & Support
+
+Uptime docs
+
+Logs docs
+
+
+Compare
+Pingdom
+Pagerduty
+StatusPage.io
+Uptime Robot
+StatusCake
+Opsgenie
+VictorOps
+
+
+
+
+From the community
+What Is Incident Management? Beginnerâ€™s Guide
+How to Create a Developer-Friendly On-Call Schedule in 7 steps
+8 Best Free & Open Source Status Page Tools in 2024
+10 Best API Monitoring Tools in 2024
+5 Most Used Incident Management Tools (Reviewed & Ranked)
+
+
+
+
+
+
+
+
+
+Better Stack
+lets you see inside any stack, debug any issue, and resolve any incident.
+
+
+
++1 (628) 900-3830
+hello@betterstack.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Terms of Use
+Privacy Policy
+GDPR
+
+
+System status
+
+
+
+
+
+
+
+
+
+
+
+
+© 2025 Better Stack, Inc.
+
+
+
+
+
+
+
+
+
+
+
+
