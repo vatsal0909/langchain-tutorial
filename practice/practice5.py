@@ -31,4 +31,4 @@ parallel_chain = RunnableParallel({
 
 chain = chain1|parallel_chain|RunnableLambda(lambda x: fun_runnable(x['key_points']))
 
-print(chain.invoke({'topic':'black hole'}))
+print(chain.invoke({'topic':'black hol'}))
